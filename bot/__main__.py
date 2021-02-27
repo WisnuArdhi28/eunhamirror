@@ -16,7 +16,7 @@ from .helper.telegram_helper.message_utils import sendMessage, editMessage, send
 from .helper.telegram_helper.filters import CustomFilters
 from .helper.telegram_helper.button_build import ButtonMaker
 from .modules import authorize, list, cancel_mirror, mirror_status, mirror_leech, clone, ytdlp, \
-                     shell, eval, delete, count, users_settings, search, rss, bt_select, bot_settings, dump, pdump, invite, dummy
+                     shell, eval, delete, count, users_settings, search, rss, bt_select, bot_settings, dump, pdump, invite, dummy, speedtest
 
 
 def stats(update, context):
@@ -130,6 +130,7 @@ NOTE: Try each command without any perfix to see more detalis.
 /{BotCommands.InviteCommand}: Invite Users To Private GitHub Repo, Example /{BotCommands.InviteCommand} Box-boi redmi_biloba_dump (Only Owner)
 /{BotCommands.PdumpCommand}: Dump Android Firmwares To GitHub Repo(Privately), Example /{BotCommands.PdumpCommand} firmware_link (Authorized Users Only)
 /{BotCommands.DumpCommand}: Dump Android Firmwares To GitHub Repo, Example /{BotCommands.DumpCommand} firmware_link (Authorized Users Only)
+/{BotCommands.SpeedCommand}: Check Internet Speed of the Host
 /{BotCommands.ClearLocalsCommand}: Clear {BotCommands.EvalCommand} or {BotCommands.ExecCommand} locals (Only Owner).
 /{BotCommands.RssListCommand[0]} or /{BotCommands.RssListCommand[1]}: List all subscribed rss feed info (Only Owner & Sudo).
 /{BotCommands.RssGetCommand[0]} or /{BotCommands.RssGetCommand[1]}: Force fetch last N links (Only Owner & Sudo).

@@ -45,6 +45,7 @@ class _BotCommands:
         self.PdumpCommand = f'pdump{CMD_SUFFIX}'
         self.DummyCommand = f'dummy{CMD_SUFFIX}'
         self.InviteCommand = f'invite{CMD_SUFFIX}'
+        self.SpeedCommand = f'speedtest{CMD_SUFFIX}'
         self.ClearLocalsCommand = f'clearlocals{CMD_SUFFIX}'
         self.BotSetCommand = f'bsetting{CMD_SUFFIX}'
         self.UserSetCommand = f'usetting{CMD_SUFFIX}'
