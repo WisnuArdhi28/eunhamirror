@@ -164,6 +164,14 @@ Fill up rest of the fields. Meaning of each field is discussed below. **NOTE**: 
 
 **1. Required Fields**
 
+- `GITHUB_TOKEN`: itHub Token, Don't Leak This Token, Or Your Account Will Be Compromised!, Keep It A Secret, Get Your Token From: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
+- `GITHUB_ORG_NAME`: Your GitHub Organization Name, Where Your Dumps Will Be Stored
+- `GITHUB_USER_NAME`: Your GitHub Username
+- `GITHUB_DUMPER_REPO_NAME`: Leave Untouched If You Have Forked My Repos
+- `GITHUB_DUMMY_REPO_NAME`: Leave Untouched If You Have Forked My Repos
+- `TELEGRAM_CHANNEL_NAME`: Channel Tag Where Your Dumps Will Be Posted Example: @boxdumps
+- `DUMPER_REPO_WORKFLOW_URL`: Example: https://github.com/box-automation1/dumper/actions
+- `GITHUB_USER_EMAIL`: Email Of Your GitHub Account
 - `BOT_TOKEN`: The Telegram Bot Token that you got from [@BotFather](https://t.me/BotFather). `Str`
 - `OWNER_ID`: The Telegram User ID (not username) of the Owner of the bot. `Int`
 - `TELEGRAM_API`: This is to authenticate your Telegram account for downloading Telegram files. You can get this from https://my.telegram.org. `Int`
@@ -383,7 +391,10 @@ restart - Restart the Bot
 stats - Bot Usage Stats
 ping - Ping the Bot
 help - All cmds with description
-```
+dump - Dump Firmware
+pdump - Dump Firmware to Private Repo
+invite - Invite to Private repo
+dummy  - Dummy Tree Generator
 ------
 </details>
 

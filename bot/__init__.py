@@ -96,6 +96,38 @@ if DATABASE_URL:
 else:
     config_dict = {}
 
+GITHUB_USER_NAME = environ.get('GITHUB_USER_NAME', '')
+if len(GITHUB_USER_NAME) == 0:
+    GITHUB_USER_NAME = ''
+
+GITHUB_TOKEN = environ.get('GITHUB_TOKEN', '')
+if len(GITHUB_TOKEN) == 0:
+    GITHUB_TOKEN = ''
+
+GITHUB_DUMPER_REPO_NAME = environ.get('GITHUB_DUMPER_REPO_NAME', '')
+if len(GITHUB_DUMPER_REPO_NAME) == 0:
+    GITHUB_DUMPER_REPO_NAME = ''
+
+GITHUB_DUMMY_REPO_NAME = environ.get('GITHUB_DUMMY_REPO_NAME', '')
+if len(GITHUB_DUMMY_REPO_NAME) == 0:
+    GITHUB_DUMMY_REPO_NAME = ''
+
+TELEGRAM_CHANNEL_NAME = environ.get('TELEGRAM_CHANNEL_NAME', '')
+if len(TELEGRAM_CHANNEL_NAME) == 0:
+    TELEGRAM_CHANNEL_NAME = ''
+
+DUMPER_REPO_WORKFLOW_URL = environ.get('DUMPER_REPO_WORKFLOW_URL', '')
+if len(DUMPER_REPO_WORKFLOW_URL) == 0:
+    DUMPER_REPO_WORKFLOW_URL = ''
+
+GITHUB_ORG_NAME = environ.get('GITHUB_ORG_NAME', '')
+if len(GITHUB_ORG_NAME) == 0:
+    GITHUB_ORG_NAME = ''
+
+GITHUB_USER_EMAIL = environ.get('GITHUB_USER_EMAIL', '')
+if len(GITHUB_USER_EMAIL) == 0:
+    GITHUB_USER_EMAIL = ''
+
 OWNER_ID = environ.get('OWNER_ID', '')
 if len(OWNER_ID) == 0:
     log_error("OWNER_ID variable is missing! Exiting now")
