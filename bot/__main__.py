@@ -16,7 +16,7 @@ from .helper.telegram_helper.message_utils import sendMessage, editMessage, send
 from .helper.telegram_helper.filters import CustomFilters
 from .helper.telegram_helper.button_build import ButtonMaker
 from .modules import authorize, list, cancel_mirror, mirror_status, mirror_leech, clone, ytdlp, \
-                     shell, eval, delete, count, users_settings, search, rss, bt_select, bot_settings, dump, pdump, invite, dummy, speedtest
+                     shell, eval, delete, count, users_settings, search, rss, imdb, bt_select, bot_settings, dump, pdump, invite, dummy, speedtest
 
 
 def stats(update, context):
@@ -44,7 +44,6 @@ def stats(update, context):
             f'<b>Memory Free:</b> {get_readable_file_size(memory.available)}\n'\
             f'<b>Memory Used:</b> {get_readable_file_size(memory.used)}\n'
     sendMessage(stats, context.bot, update.message)
-
 
 def start(update, context):
     buttons = ButtonMaker()
@@ -86,7 +85,7 @@ def log(update, context):
     sendLogFile(context.bot, update.message)
 
 help_string = f'''
-NOTE: Try each command without any perfix to see more detalis.
+NOTE: Try each command without any argument to see more detalis.
 /{BotCommands.MirrorCommand[0]} or /{BotCommands.MirrorCommand[1]}: Start mirroring to Google Drive.
 /{BotCommands.ZipMirrorCommand[0]} or /{BotCommands.ZipMirrorCommand[1]}: Start mirroring and upload the file/folder compressed with zip extension.
 /{BotCommands.UnzipMirrorCommand[0]} or /{BotCommands.UnzipMirrorCommand[1]}: Start mirroring and upload the file/folder extracted from any archive extension.

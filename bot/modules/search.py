@@ -3,7 +3,6 @@ from threading import Thread
 from html import escape
 from urllib.parse import quote
 from telegram.ext import CommandHandler, CallbackQueryHandler
-from json import loads as jsonloads
 
 from bot import dispatcher, LOGGER, config_dict, get_client
 from bot.helper.telegram_helper.message_utils import editMessage, sendMessage
@@ -19,16 +18,21 @@ TELEGRAPH_LIMIT = 300
 
 
 def initiate_search_tools():
+    qbclient = get_client()
+    qb_plugins = qbclient.search_plugins()
     if SEARCH_PLUGINS := config_dict['SEARCH_PLUGINS']:
         globals()['PLUGINS'] = []
-        src_plugins = jsonloads(SEARCH_PLUGINS)
-        qbclient = get_client()
-        qb_plugins = qbclient.search_plugins()
+        src_plugins = eval(SEARCH_PLUGINS)
         if qb_plugins:
             for plugin in qb_plugins:
                 qbclient.search_uninstall_plugin(names=plugin['name'])
         qbclient.search_install_plugin(src_plugins)
         qbclient.auth_log_out()
+    elif qb_plugins:
+        for plugin in qb_plugins:
+            qbclient.search_uninstall_plugin(names=plugin['name'])
+        globals()['PLUGINS'] = []
+    qbclient.auth_log_out()
 
     if SEARCH_API_LINK := config_dict['SEARCH_API_LINK']:
         global SITES
@@ -62,10 +66,10 @@ def torser(update, context):
         sendMessage('Choose tool to search:', context.bot, update.message, button)
     elif SITES is not None:
         button = __api_buttons(user_id, "apisearch")
-        sendMessage('Choose site to search:', context.bot, update.message, button)
+        sendMessage('Choose site to search | API:', context.bot, update.message, button)
     else:
         button = __plugin_buttons(user_id)
-        sendMessage('Choose site to search:', context.bot, update.message, button)
+        sendMessage('Choose site to search | Plugins:', context.bot, update.message, button)
 
 def torserbut(update, context):
     query = update.callback_query
@@ -189,7 +193,7 @@ def __getResult(search_results, key, message, method):
                         if 'torrent' in subres.keys():
                             msg += f"<a href='{subres['torrent']}'>Direct Link</a><br>"
                         elif 'magnet' in subres.keys():
-                            msg += f"<b>Share Magnet to</b> "
+                            msg += "<b>Share Magnet to</b> "
                             msg += f"<a href='http://t.me/share/url?url={subres['magnet']}'>Telegram</a><br>"
                     msg += '<br>'
                 else:
@@ -201,7 +205,7 @@ def __getResult(search_results, key, message, method):
                     if 'torrent' in result.keys():
                         msg += f"<a href='{result['torrent']}'>Direct Link</a><br><br>"
                     elif 'magnet' in result.keys():
-                        msg += f"<b>Share Magnet to</b> "
+                        msg += "<b>Share Magnet to</b> "
                         msg += f"<a href='http://t.me/share/url?url={quote(result['magnet'])}'>Telegram</a><br><br>"
                     else:
                         msg += '<br>'

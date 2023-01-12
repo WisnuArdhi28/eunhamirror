@@ -1,3 +1,4 @@
+import hashlib
 from time import sleep, time
 from os import remove, path as ospath
 
